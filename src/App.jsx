@@ -1,20 +1,22 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+
+
+
 
 //components
-import Calendar from './components/Calendar/Calendar'
-
+import Topbar from './components/Topbar'
+import Calendar from './components/Calendar'
 
 function App() {
 
   
 
   return (
-    
-    
-        <Calendar></Calendar>
-    
+    <div className='flex flex-col'>
+        <Topbar/>
+        <Calendar/>
+    </div>
+  
   )
 }
 
