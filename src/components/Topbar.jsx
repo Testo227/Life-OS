@@ -1,7 +1,10 @@
 const Topbar = () => {
     return ( 
-        <div>
-            <h1 className="bg-[rgb(255,192,0)] text-black font-bold text-center text-xl">Janniks Life-OS</h1>
+        <div className="w-full h-14 bg-slate-950 flex items-center justify-center
+                border-b border-slate-800">
+            <h1 className="text-slate-100 text-lg font-medium tracking-wide">
+                Janniks Life Operating 
+            </h1>
         </div>
      );
 }

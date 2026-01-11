@@ -12,7 +12,7 @@ function App() {
   
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col w-screen h-screen bg-slate-900 overflow-hidden'>
         <Topbar/>
         <Calendar/>
     </div>
