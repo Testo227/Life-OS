@@ -1,6 +1,9 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+//components
+import TaskModal from "./TaskModal";
+
 const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -330,97 +333,7 @@ const Calendar = () => {
                     ))}
                 </ul>
             </div>
-            {showAddTask ? (
-  <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-    {/* Modal Box */}
-    <div className="bg-slate-950 w-full max-w-md p-6 rounded-2xl shadow-xl border border-slate-800">
-      
-      {/* Header */}
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-slate-100 text-lg font-semibold">Neuen Eintrag erstellen</h2>
-        <button onClick={()=>setShowAddTask(false)} className="text-slate-400 hover:text-indigo-500 transition-colors">✕</button>
-      </div>
-
-      {/* Form */}
-      <div className="flex flex-col gap-4">
-
-        {/* Titel / Aufgabe */}
-        <div className="flex flex-col">
-          <label className="text-slate-200 mb-1 font-medium">Titel / Aufgabe</label>
-          <input
-            type="text"
-            placeholder="Aufgabe eingeben..."
-            className="bg-slate-900 text-slate-100 px-3 py-2 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-        </div>
-
-        {/* Datum */}
-        <div className="flex flex-col">
-          <label className="text-slate-200 mb-1 font-medium">Datum</label>
-          <input
-            type="date"
-            className="bg-slate-900 text-slate-100 px-3 py-2 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-        </div>
-
-        {/* Uhrzeit */}
-        <div className="flex flex-col">
-          <label className="text-slate-200 mb-1 font-medium">Uhrzeit</label>
-          <input
-            type="time"
-            className="bg-slate-900 text-slate-100 px-3 py-2 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-        </div>
-
-        {/* Beschreibung */}
-        <div className="flex flex-col">
-          <label className="text-slate-200 mb-1 font-medium">Beschreibung</label>
-          <textarea
-            placeholder="Optional"
-            className="bg-slate-900 text-slate-100 px-3 py-2 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none h-24"
-          />
-        </div>
-
-        {/* Wiederholen / Recurrence (UI nur) */}
-        <div className="flex flex-col">
-          <label className="text-slate-200 mb-1 font-medium">Wiederholen?</label>
-
-          {/* Dropdown */}
-          <select className="bg-slate-900 text-slate-100 px-3 py-2 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2">
-            <option>Nie</option>
-            <option>Täglich</option>
-            <option>Jeden Wochentag (Mo–Fr)</option>
-            <option>Jeden Samstag</option>
-            <option>Immer am ersten des Monats</option>
-            <option>Immer am letzten des Monats</option>
-            <option>Alle 2 Wochen</option>
-          </select>
-
-          {/* Dynamische Wochentags-Checkboxes (nur UI) */}
-          <div className="flex gap-2 flex-wrap">
-            {["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"].map((day) => (
-              <label key={day} className="flex items-center gap-1 text-slate-100">
-                <input type="checkbox" className="accent-indigo-500 w-4 h-4" />
-                {day}
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Buttons */}
-        <div className="flex justify-end gap-2 mt-2">
-          <button onClick={() => setShowAddTask(false)} className="px-4 py-2 rounded-lg bg-slate-800 text-slate-100 hover:bg-slate-700 transition-colors">
-            Abbrechen
-          </button>
-          <button className="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-500 transition-colors">
-            Speichern
-          </button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-) : null}
+            {showAddTask ? <TaskModal tasks={tasks} setTasks={setTasks} setShowAddTask={setShowAddTask}/>:null}
         </div>
      );
 }
